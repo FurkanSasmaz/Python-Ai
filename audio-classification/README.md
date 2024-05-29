@@ -4,7 +4,6 @@ Pipeline for prototyping audio classification algorithms with TF 2.3
 
 <!-- TOC -->
 
-- [YouTube](#youtube)
 - [Environment](#environment)
 - [Jupyter Notebooks](#jupyter-notebooks)
 - [Audio Preprocessing](#audio-preprocessing)
