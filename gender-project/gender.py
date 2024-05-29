@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+@author: furkan.sasmaz
+"""
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import numpy as np
