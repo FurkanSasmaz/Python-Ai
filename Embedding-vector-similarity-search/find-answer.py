@@ -38,15 +38,15 @@ def find_most_similar_answer(question, collection):
     most_similar = max(similarities, key=lambda x: x[0])
     return most_similar[1], most_similar[2], most_similar[0]
 
-# OpenAI istemcisini oluştur
+# Build the OpenAI client
 openai_client = OpenAI(organization="org-key", api_key="api-key")
 
-# MongoDB'ye bağlan
+# Connect MongoDB
 mongodb_client = MongoClient('mongodb://localhost:27017/')
 db = mongodb_client['db-name']
 collection = db['collection-name']
 
-# Kullanıcıdan gelen soru
+# Question from user
 user_question = "1.osmanlı padişahı kimdir?"
 
 # En benzer cevabı bul
