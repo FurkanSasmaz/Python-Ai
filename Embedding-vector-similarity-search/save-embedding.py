@@ -15,11 +15,11 @@ import string
 nltk.download('punkt')
 
 def preprocess_text(text):
-    # Noktalama işaretlerini kaldır
+    # Remove punctuation
     text = text.translate(str.maketrans('', '', string.punctuation))
-    # Büyük-küçük harf dönüştürme
+    # Upper & lower case
     text = text.lower()
-    # Gereksiz beyaz boşlukları kaldırma
+    # Remove unnecessary spaces
     text = ' '.join(text.split())
     return text
 
