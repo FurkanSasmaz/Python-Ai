@@ -5,9 +5,9 @@ import numpy as np
 import string
 
 def preprocess_text(text):
-    # Noktalama işaretlerini kaldır
+    # Remove punctuation
     text = text.translate(str.maketrans('', '', string.punctuation))
-    # Büyük-küçük harf dönüştürme
+    #Upper & lower case 
     text = text.lower()
     # Gereksiz beyaz boşlukları kaldırma
     text = ' '.join(text.split())
