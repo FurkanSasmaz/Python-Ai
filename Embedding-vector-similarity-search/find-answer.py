@@ -49,7 +49,7 @@ collection = db['collection-name']
 # Question from user
 user_question = "1.osmanlı padişahı kimdir?"
 
-# En benzer cevabı bul
+# Find the most similar answer
 most_similar_question, answer, similarity = find_most_similar_answer(user_question, collection)
 
 if similarity > 0.9: #optional
@@ -62,7 +62,7 @@ else:
     print(f"En Benzer Soru: {most_similar_question}")
     print(f"Benzerlik Skoru: {similarity}")
     
-# MongoDB bağlantısını kapat
+# Close MongoDB connection
 mongodb_client.close()
 
 
