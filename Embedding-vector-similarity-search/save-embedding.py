@@ -47,12 +47,12 @@ def save_vector_to_mongodb(question, answer, text_vector, collection):
         collection.insert_one(vector_data)
         print(f'Soru-cevap çifti başarıyla MongoDB\'ye kaydedildi! ({question})')
 
-# MongoDB'ye bağlan
+# Connect MongoDB
 mongodb_client = MongoClient('mongodb://localhost:27017/')
 db = mongodb_client['db-name']
 collection = db['collection-name']
 
-# JSON dosyasını oku ve embedding vektörlerini oluşturup MongoDB'ye kaydet
+# Read JSON file and create embedding vectors and save to MongoDB
 json_file_path = "responses2.json"
 with open(json_file_path, 'r', encoding='utf-8') as json_file:
     qa_pairs = json.load(json_file)
