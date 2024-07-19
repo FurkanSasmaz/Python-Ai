@@ -27,14 +27,14 @@ def find_most_similar_answer(question, collection):
     # Pull all embedding vectors and question-answer pairs from MongoDB
     all_vectors = list(collection.find({}, {'embedding_vector': 1, 'question': 1, 'answer': 1, '_id': 0}))
     
-    # Tüm vektörlerle benzerlik hesapla
+    # Calculate similarity with all vectors
     similarities = []
     for vector_data in all_vectors:
         db_vector = np.array(vector_data['embedding_vector']).reshape(1, -1)
         similarity = cosine_similarity(question_embedding, db_vector)[0][0]
         similarities.append((similarity, vector_data['question'], vector_data['answer']))
     
-    # En yüksek benzerliğe sahip olanı seç
+    # Choose the one with the highest similarity
     most_similar = max(similarities, key=lambda x: x[0])
     return most_similar[1], most_similar[2], most_similar[0]
 
