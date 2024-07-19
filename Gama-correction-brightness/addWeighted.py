@@ -8,7 +8,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
-# Mediapipe yüz algılama modelini yükle
+# Load Mediapipe face detection model
 mp_face_detection = mp.solutions.face_detection
 mp_drawing = mp.solutions.drawing_utils
 face_detection = mp_face_detection.FaceDetection()
@@ -18,7 +18,7 @@ def calculate_brightness(image):
     mean_brightness = np.mean(gray)
     return mean_brightness
 
-# Resmi oku
+# Read image
 img = cv2.imread('2.png')
 
 # Yüz algılama işlemi
