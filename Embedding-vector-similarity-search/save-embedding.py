@@ -57,7 +57,7 @@ json_file_path = "responses2.json"
 with open(json_file_path, 'r', encoding='utf-8') as json_file:
     qa_pairs = json.load(json_file)
 
-# OpenAI istemcisini oluştur
+# Build the OpenAI client
 openai_client = OpenAI(organization="org-key", api_key="api-key")
 
 # Her soru-cevap çifti için embedding vektörü oluştur ve MongoDB'ye kaydet
