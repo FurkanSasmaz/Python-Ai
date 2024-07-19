@@ -21,11 +21,11 @@ def calculate_brightness(image):
 # Read image
 img = cv2.imread('2.png')
 
-# Yüz algılama işlemi
+# Face detection
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 results = face_detection.process(img_rgb)
 
-# Yüz algılandıysa
+# if face_detection
 if results.detections:
     for detection in results.detections:
         bboxC = detection.location_data.relative_bounding_box
@@ -33,10 +33,10 @@ if results.detections:
         x, y, w, h = int(bboxC.xmin * iw), int(bboxC.ymin * ih), \
                      int(bboxC.width * iw), int(bboxC.height * ih)
 
-        # Orijinal resmi kopyala
+        # compy original image
         img_copy = img.copy()
 
-        # Yüz bölgesini seç
+        # for face area
         face_region_original = img[y:y+h, x:x+w]
 
         # Kontrast ve parlaklık ayarını uygula
