@@ -60,21 +60,21 @@ with open(json_file_path, 'r', encoding='utf-8') as json_file:
 # Build the OpenAI client
 openai_client = OpenAI(organization="org-key", api_key="api-key")
 
-# Her soru-cevap çifti için embedding vektörü oluştur ve MongoDB'ye kaydet
+# Create embedding vector for each question-answer pair and save to MongoDB
 for pair in qa_pairs:
     question = preprocess_text(pair['question'])
     answer = pair['answer']
     
-    #Soruyu vektöre çevir
+    #Convert question to vector
     response = openai_client.embeddings.create(
         model="embedding-model",
         input=[question]
     )
     embedding_vector = response.data[0].embedding
 
-    # Vektörü MongoDB'ye kaydet
+    # Save vector to MongoDB
     save_vector_to_mongodb(question, answer, embedding_vector, collection)
 
-# MongoDB bağlantısını kapat
+# Close MongoDB connect
 mongodb_client.close()
 
