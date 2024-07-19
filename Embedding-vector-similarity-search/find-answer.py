@@ -17,14 +17,14 @@ def find_most_similar_answer(question, collection):
     # Kullanıcıdan gelen soruyu ön işlemden geçir
     processed_question = preprocess_text(question)
     
-    # Soruyu embedding vektörüne dönüştür
+    # Convert question to embedding vector
     response = openai_client.embeddings.create(
         model="embedding-model", 
         input=[processed_question]
     )
     question_embedding = np.array(response.data[0].embedding).reshape(1, -1)
     
-    # MongoDB'deki tüm embedding vektörlerini ve soru-cevap çiftlerini çek
+    # Pull all embedding vectors and question-answer pairs from MongoDB
     all_vectors = list(collection.find({}, {'embedding_vector': 1, 'question': 1, 'answer': 1, '_id': 0}))
     
     # Tüm vektörlerle benzerlik hesapla
