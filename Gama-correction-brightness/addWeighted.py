@@ -39,12 +39,12 @@ if results.detections:
         # for face area
         face_region_original = img[y:y+h, x:x+w]
 
-        # Kontrast ve parlaklık ayarını uygula
-        contrast = 5.0  # Kontrast kontrolü (0'dan 127'ye kadar)
-        brightness = 2.0  # Parlaklık kontrolü (0-100)
+        # Apply contrast and brightness
+        contrast = 5.0  # Contrast control (0 to 127)
+        brightness = 2.0  # Brightness control (0-100)
         face_region_adjusted = cv2.addWeighted(face_region_original, contrast, face_region_original, 0, brightness)
 
-        # Orijinal resmi güncellenmiş yüz bölgesi ile değiştir
+        # Replace original image with updated face area
         img_copy[y:y+h, x:x+w] = face_region_adjusted
         
         original_brightness = calculate_brightness(face_region_original)
@@ -53,7 +53,7 @@ if results.detections:
         print("İşlenmiş Yüzün Parlaklığı:", adjusted_brightness)
 
 
-# Orijinal resmi ve işlenmiş resmi göster
+# Show original image and processed image
 cv2.imshow('Original', img)
 cv2.imshow('Adjusted', img_copy)
 cv2.waitKey(0)
