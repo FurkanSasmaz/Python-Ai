@@ -9,7 +9,7 @@ def preprocess_text(text):
     text = text.translate(str.maketrans('', '', string.punctuation))
     #Upper & lower case 
     text = text.lower()
-    # Gereksiz beyaz boşlukları kaldırma
+    # Remove unnecessary white spaces
     text = ' '.join(text.split())
     return text
 
